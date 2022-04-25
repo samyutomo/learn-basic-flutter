@@ -8,20 +8,86 @@ class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "Padding Center",
+        title: "Row Column",
         theme: ThemeData(primarySwatch: Colors.blue),
         home: Scaffold(
           appBar: AppBar(
-            title: const Text("Padding & Center"),
+            title: const Text("Row & Column"),
           ),
           body:
-              /* remove comment symbol (//) below to see what padding or center acts */
-              // Padding(
-              //   padding: EdgeInsets.all(30),
-              //   child: Text("Ini Padding"),
-              // )
-              Center(
-                child: Text("Text berada di tengah"),
+              Column(
+                children: [
+                  const Text("MainAxisAlignment.spaceEvenly"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      Icon(Icons.share),
+                      Icon(Icons.thumb_up),
+                      Icon(Icons.thumb_down)
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  const Text("MainAxisAlignment.spaceAround"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: const [
+                      Icon(Icons.share),
+                      Icon(Icons.thumb_up),
+                      Icon(Icons.thumb_down)
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  const Text("MainAxisAlignment.spaceBetween"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Icon(Icons.share),
+                      Icon(Icons.thumb_up),
+                      Icon(Icons.thumb_down)
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  const Text("MainAxisAlignment.start"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [
+                      Icon(Icons.share),
+                      Icon(Icons.thumb_up),
+                      Icon(Icons.thumb_down)
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  const Text("MainAxisAlignment.center"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(Icons.share),
+                      Icon(Icons.thumb_up),
+                      Icon(Icons.thumb_down)
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  const Text("MainAxisAlignment.end"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: const [
+                      Icon(Icons.share),
+                      Icon(Icons.thumb_up),
+                      Icon(Icons.thumb_down)
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Column(
+                    children: const [
+                      Text("Sebuah Judul", style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold
+                      ),
+                      ),
+                      Text("Lorem ipsum dolor sit amet")
+                    ],
+                  )
+                ],
               )
           ),
         );
