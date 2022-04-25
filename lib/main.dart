@@ -8,48 +8,22 @@ class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "Container",
+        title: "Padding Center",
         theme: ThemeData(primarySwatch: Colors.blue),
         home: Scaffold(
           appBar: AppBar(
-            title: const Text("First Screen"),
+            title: const Text("Padding & Center"),
           ),
-          body: Column(
-            children: [
-              Container(
-                child: const Text("Hi", style: TextStyle(fontSize: 40),),
-                decoration: const BoxDecoration(color: Colors.red),
-              ),
-              Container(
-                child: const Text("Hi", style: TextStyle(fontSize: 40),),
-                decoration: const BoxDecoration(
-                    color: Colors.red,
-                    shape: BoxShape.circle),
-              ),
-              Container(
-                child: const Text("Hi", style: TextStyle(fontSize: 40),),
-                decoration: const BoxDecoration(
-                    color: Colors.red,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black,
-                          offset: Offset(3, 6),
-                          blurRadius: 10)
-                ]),
-              ),
-              Container(
-                  child: const Text("Hi", style: TextStyle(fontSize: 40),),
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      border: Border.all(color: Colors.green, width: 3))),
-              Container(
-                  child: const Text("Hi", style: TextStyle(fontSize: 40),),
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      border: Border.all(color: Colors.green, width: 3),
-                      borderRadius: BorderRadius.circular(10)))
-            ],
+          body:
+              /* remove comment symbol (//) below to see what padding or center acts */
+              // Padding(
+              //   padding: EdgeInsets.all(30),
+              //   child: Text("Ini Padding"),
+              // )
+              Center(
+                child: Text("Text berada di tengah"),
+              )
           ),
-        ));
+        );
   }
 }
