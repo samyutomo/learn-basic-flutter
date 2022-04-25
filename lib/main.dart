@@ -8,88 +8,67 @@ class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "Row Column",
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: Scaffold(
+      title: "Button",
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: Scaffold(
           appBar: AppBar(
-            title: const Text("Row & Column"),
+            title: const Text("Button"),
           ),
-          body:
-              Column(
-                children: [
-                  const Text("MainAxisAlignment.spaceEvenly"),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
-                      Icon(Icons.share),
-                      Icon(Icons.thumb_up),
-                      Icon(Icons.thumb_down)
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  const Text("MainAxisAlignment.spaceAround"),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: const [
-                      Icon(Icons.share),
-                      Icon(Icons.thumb_up),
-                      Icon(Icons.thumb_down)
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  const Text("MainAxisAlignment.spaceBetween"),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Icon(Icons.share),
-                      Icon(Icons.thumb_up),
-                      Icon(Icons.thumb_down)
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  const Text("MainAxisAlignment.start"),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      Icon(Icons.share),
-                      Icon(Icons.thumb_up),
-                      Icon(Icons.thumb_down)
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  const Text("MainAxisAlignment.center"),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(Icons.share),
-                      Icon(Icons.thumb_up),
-                      Icon(Icons.thumb_down)
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  const Text("MainAxisAlignment.end"),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Icon(Icons.share),
-                      Icon(Icons.thumb_up),
-                      Icon(Icons.thumb_down)
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Column(
-                    children: const [
-                      Text("Sebuah Judul", style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold
-                      ),
-                      ),
-                      Text("Lorem ipsum dolor sit amet")
-                    ],
-                  )
-                ],
-              )
-          ),
-        );
+          body: Column(
+            children: [
+              ElevatedButton(
+                  onPressed: () {
+                    // action when clicked
+                  },
+                  child: const Text("Elevated Button")),
+              TextButton(
+                  onPressed: () {
+                    // action when clicked
+                  },
+                  child: const Text("Text Button")),
+              OutlinedButton(
+                  onPressed: () {
+                    // action when clicked
+                  },
+                  child: const Text("Outlined Button")),
+              IconButton(
+                onPressed: () {
+                  // action when clicked
+                },
+                icon: const Icon(Icons.volume_up),
+                tooltip: "Increase volume by 10",
+              ),
+              const DropDownButton()
+            ],
+          )),
+    );
+  }
+}
+
+class DropDownButton extends StatefulWidget {
+  const DropDownButton({Key? key}) : super(key: key);
+
+  @override
+  State<DropDownButton> createState() => _DropDownButton();
+}
+
+class _DropDownButton extends State<DropDownButton> {
+  String? language;
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton(
+        items: const [
+          DropdownMenuItem(value: "Dart", child: Text("Dart")),
+          DropdownMenuItem(value: "Kotlin", child: Text("Kotlin")),
+          DropdownMenuItem(value: "Swift", child: Text("Swift"))
+        ],
+        value: language,
+        hint: const Text("Select Language"),
+        onChanged: (String? value) {
+          setState(() {
+            language = value;
+          });
+        });
   }
 }
