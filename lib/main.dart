@@ -8,19 +8,26 @@ class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Image",
-      theme: ThemeData(primarySwatch: Colors.blue),
+      title: "Font",
+      theme: ThemeData(
+          primarySwatch: Colors.blue,
+          /*
+          remove comment symbol to make Poppins as default font
+          fontFamily: 'Poppins'
+          */
+      ),
       home: Scaffold(
           appBar: AppBar(
-            title: const Text("Image"),
+            title: const Text("Font"),
           ),
-          body: Center(
-            child: Image.asset(
-                'images/android_nougat.jpg',
-              width: 200,
-              height: 300,
-            )
-          )),
+          body: const Center(
+              child: Text(
+            "Poppins Font",
+            style: TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 30,
+                fontWeight: FontWeight.bold),
+          ))),
     );
   }
 }
