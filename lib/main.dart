@@ -14,10 +14,14 @@ class FirstScreen extends StatelessWidget {
           appBar: AppBar(
             title: const Text("Input"),
           ),
-          body: ListView(children:  const [
+          body: ListView(children: const [
             Padding(
               padding: EdgeInsets.all(16),
               child: InputTextField(),
+            ),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: InputTextFieldController(),
             ),
             Padding(
               padding: EdgeInsets.all(16),
@@ -78,6 +82,44 @@ class _InputTextFieldState extends State<InputTextField> {
   }
 }
 
+class InputTextFieldController extends StatefulWidget {
+  const InputTextFieldController({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _InputTextFieldControllerState();
+}
+
+class _InputTextFieldControllerState extends State<InputTextFieldController> {
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        TextField(
+          controller: _controller,
+          decoration: const InputDecoration(
+              hintText: "Write your name here...", labelText: "Your Name"),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        ElevatedButton(
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      content: Text("Hello, ${_controller.text}!"),
+                    );
+                  });
+            },
+            child: const Text("Submit"))
+      ],
+    );
+  }
+}
+
 class InputSwitch extends StatefulWidget {
   const InputSwitch({Key? key}) : super(key: key);
 
@@ -91,17 +133,17 @@ class _InputSwitchState extends State<InputSwitch> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-     leading: Switch(
-        value: lightOn,
-        onChanged: (bool value) {
-          setState(() {
-            lightOn = value;
-          });
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(lightOn ? "Light ON" : "Light OFF"),
-            duration: const Duration(seconds: 1),
-          ));
-        }),
+      leading: Switch(
+          value: lightOn,
+          onChanged: (bool value) {
+            setState(() {
+              lightOn = value;
+            });
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(lightOn ? "Light ON" : "Light OFF"),
+              duration: const Duration(seconds: 1),
+            ));
+          }),
       title: const Text("Turn The Light"),
     );
   }
