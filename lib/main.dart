@@ -10,35 +10,48 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "ListView",
       theme: ThemeData(),
-      home: ScrollingScreen(),
+      home: const ExpandedWidget(),
     );
   }
 }
 
-class ScrollingScreen extends StatelessWidget {
-  ScrollingScreen({Key? key}) : super(key: key);
-  final List<int> numberList = <int>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+class ExpandedWidget extends StatelessWidget {
+  const ExpandedWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.separated(
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            height: 250,
-            decoration: BoxDecoration(
-                color: Colors.grey, border: Border.all(color: Colors.black)),
-            child: Center(
-              child: Text(
-                "${numberList[index]}",
-                style: const TextStyle(fontSize: 50),
-              ),
-            ),
-          );
-        },
-        itemCount: numberList.length,
-        separatorBuilder: (BuildContext context, int index) => const Divider(),
-      ),
+    return Column(
+      children: [
+        Expanded(
+            child: Container(
+          color: Colors.red,
+        )),
+        Expanded(
+            child: Container(
+          color: Colors.orange,
+        )),
+        Expanded(
+            child: Container(
+          color: Colors.yellow,
+        )),
+        Expanded(
+            child: Container(
+          color: Colors.green,
+        )),
+        Expanded(
+            flex: 2,
+            child: Container(
+              color: Colors.blue,
+            )),
+        Expanded(
+            child: Container(
+          color: Colors.indigo,
+        )),
+        Expanded(
+            child: Container(
+          color: Colors.purple,
+        ))
+      ],
     );
   }
 }
