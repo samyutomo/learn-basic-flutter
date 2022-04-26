@@ -23,7 +23,7 @@ class MainScreen extends StatelessWidget {
               children: [
                 Expanded(
                     flex: 1,
-                    child: Image.asset('images/farm-house.jpg')),
+                    child: Hero(tag: "farmhouse", child: Image.asset('images/farm-house.jpg'))),
                 Expanded(
                     flex: 2,
                     child: Padding(
