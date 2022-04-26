@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
 
 class FirstScreen extends StatelessWidget {
   const FirstScreen({Key? key}) : super(key: key);
+  final String message = "Hello from First Screen!";
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class FirstScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context){
-                  return const SecondScreen();
+                  return SecondScreen(message);
                 }));
               },
               child: const Text("Move to Second Screen")
