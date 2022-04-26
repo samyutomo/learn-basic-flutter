@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Responsive Layout",
+      title: "Responsive Layout - MediaQuery vs LayoutBuilder",
       theme: ThemeData(),
       home: const HomePage(),
     );
@@ -23,26 +23,56 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
-    Orientation orientation = MediaQuery.of(context).orientation;
 
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            "Screen width: ${screenSize.width.toStringAsFixed(2)}",
-            style: const TextStyle(color: Colors.white, fontSize: 18),
-            textAlign: TextAlign.center,
-          ),
-          Text(
-            "Orientation: $orientation",
-            style: const TextStyle(color: Colors.white, fontSize: 18),
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
-    );
+        backgroundColor: Colors.blueGrey,
+        body: Row(
+          children: [
+            Expanded(child: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraint) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    "MediaQuery: ${screenSize.width.toStringAsFixed(2)}",
+                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    "LayoutBuilder: ${constraint.maxWidth}",
+                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                    textAlign: TextAlign.center,
+                  )
+                ],
+              );
+            })),
+            Expanded(
+                flex: 3,
+                child: LayoutBuilder(
+                    builder: (BuildContext context, BoxConstraints constraint) {
+                  return Container(
+                      color: Colors.white,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            "MediaQuery: ${screenSize.width.toStringAsFixed(2)}",
+                            style: const TextStyle(
+                                color: Colors.blueGrey, fontSize: 18),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            "LayoutBuilder: ${constraint.maxWidth}",
+                            style: const TextStyle(
+                                color: Colors.blueGrey, fontSize: 18),
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      ));
+                }))
+          ],
+        ));
   }
 }
