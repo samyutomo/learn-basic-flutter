@@ -1,4 +1,4 @@
-import 'package:basic_flutter_dicoding/detail_screen.dart';
+import 'package:basic_flutter_dicoding/main_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Wisata Bandung",
       theme: ThemeData(),
-      home: const DetailScreen(),
+      home: const MainScreen(),
     );
   }
 }
