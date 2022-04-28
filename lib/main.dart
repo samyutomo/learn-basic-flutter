@@ -118,6 +118,12 @@ class _InputTextFieldControllerState extends State<InputTextFieldController> {
       ],
     );
   }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 }
 
 class InputSwitch extends StatefulWidget {
