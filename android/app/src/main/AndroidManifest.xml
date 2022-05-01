@@ -1,7 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.samyutomo.app.basic_flutter_dicoding">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
-        android:label="basic_flutter_dicoding"
+        android:label="Learn Flutter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
